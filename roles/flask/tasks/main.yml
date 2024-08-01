@@ -1,26 +1,21 @@
 ---
-# tasks file for /etc/ansible/roles/flask
-- name: Deploy Flask Stack
-  hosts: 192.168.1.17
-  gather_facts: false
-  tasks:
-    - name: Create and start services
-      community.docker.docker_compose_v2:
-        project_src: awesome-compose/flask
-        docker_cli: /usr/local/bin/docker
-      register: output
+- name: Create and start services
+  community.docker.docker_compose_v2:
+    project_src: awesome-compose/flask
+    docker_cli: /usr/local/bin/docker
+  register: output
 
-    - name: Show results
-      ansible.builtin.debug:
-        var: output
+- name: Show results
+  ansible.builtin.debug:
+    var: output
 
-    - name: Run `docker-compose up` again
-      community.docker.docker_compose_v2:
-        project_src: awesome-compose/flask
-        docker_cli: /usr/local/bin/docker
-      register: output
+- name: Run `docker-compose up` again
+  community.docker.docker_compose_v2:
+    project_src: awesome-compose/flask
+    docker_cli: /usr/local/bin/docker
+  register: output
 
-    - name: Show results
-      ansible.builtin.debug:
-        var: output
+- name: Show results
+  ansible.builtin.debug:
+    var: output
 
