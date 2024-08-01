@@ -1,0 +1,6 @@
+# Playbook to call multiple roles to configure systems
+- name: Configure Nexus
+  hosts: 192.168.1.17
+  roles:
+   - motd
+   - flask
